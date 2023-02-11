@@ -1,9 +1,14 @@
 import express from 'express';
 import { Request, Response } from 'express';
+import { hello } from './config/env';
+import { translate } from './controller/translate';
+import { genImage } from './controller/genImage';
+import { recordRoutes } from './controller/record';
 // import cors from "cors"; // for CORS setup, usage: app.use(cors());
 
-const app = express();
-const port = process.env.PORT || 3030; // default port to listen
+console.log(hello);
+export const app = express();
+const port = process.env.PORT || 8080; // default port to listen
 
 app.get('/api', (req: Request, res: Response) => {
   const randomId = `${Math.random()}`.slice(2);
@@ -18,9 +23,27 @@ app.get('/api/item/:itemId', (req: Request, res: Response) => {
   res.json({ itemId });
 });
 
+app.get('/baidu_translate/vip/translate', async (req: Request, res: Response) => {
+  const result = await translate(req.query.keyword as string);
+  res.json({ data: result });
+});
+
+app.get('/gen_image/from_keyword', async (req: Request, res: Response) => {
+  const result = await genImage(req.query.origin as string, req.query.keyword as string);
+  res.json({ data: result });
+});
+
+app.use(recordRoutes);
+// Global error handling
+// app.use((err, _req, res) => {
+//   console.error(err.stack);
+//   res.status(500).send('Something broke!');
+// });
 app.listen(port, () => {
   // tslint:disable-next-line:no-console
   console.log(`Server started at http://localhost:${port}`);
 });
 
 module.exports = app;
+
+// ($env:ENV="local") -and (npm run dev)
