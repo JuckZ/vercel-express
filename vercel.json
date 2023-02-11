@@ -16,7 +16,19 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/listings/(.*)",
+      "dest": "backend/build/index.js"
+    },
+    {
+      "src": "/gen_image/(.*)",
+      "dest": "backend/build/index.js"
+    },
+    {
+      "src": "/baidu_translate/(.*)",
+      "dest": "backend/build/index.js"
+    },
+    {
+      "src": "/test/(.*)",
       "dest": "backend/build/index.js"
     },
     {
