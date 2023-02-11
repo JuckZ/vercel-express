@@ -16,6 +16,10 @@
   ],
   "routes": [
     {
+      "src": "/(.*)",
+      "dest": "backend/build/index.js"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "backend/build/index.js"
     },
