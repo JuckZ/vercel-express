@@ -19,6 +19,11 @@ app.get('/api', (req: Request, res: Response) => {
 });
 
 app.get('/api/item/:itemId', (req: Request, res: Response) => {
+  const { key } = req.params;
+  res.json({ key });
+});
+
+app.get('/test', (req: Request, res: Response) => {
   const { itemId } = req.params;
   res.json({ itemId });
 });
