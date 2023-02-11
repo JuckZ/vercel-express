@@ -1,6 +1,4 @@
 #!/bin/bash
-VERCEL_GIT_COMMIT_MESSAGE
-
 echo "VERCEL_GIT_COMMIT_MESSAGE: $VERCEL_GIT_COMMIT_MESSAGE"
 
 if [[ "$VERCEL_GIT_COMMIT_MESSAGE" =~ "skip ci" || "$VERCEL_GIT_COMMIT_MESSAGE" =~ "skip build"  ]] ; then
