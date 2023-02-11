@@ -23,9 +23,9 @@ app.get('/api/item/:itemId', (req: Request, res: Response) => {
   res.json({ key });
 });
 
-app.get('/test', (req: Request, res: Response) => {
-  const { itemId } = req.params;
-  res.json({ itemId });
+app.get('/test/:id', (req: Request, res: Response) => {
+  const { id } = req.params;
+  res.json({ id });
 });
 
 app.get('/baidu_translate/vip/translate', async (req: Request, res: Response) => {
